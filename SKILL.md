@@ -121,11 +121,18 @@ When working in a manuscript package, place editable outputs in an `Editable_Fig
 
 ## Final Handoff Note
 
-When returning the finished `.drawio`, include this short editing note:
+When returning the finished `.drawio`, include a short editing note in the user's language. Infer the language from the user's current request and conversation. If the user writes in Chinese, use Chinese. If the user writes in English, use English. If the conversation is mixed, use the dominant language or the language used in the latest request.
+
+Chinese template:
+
+```text
+后续可以在 draw.io 官网继续编辑：https://app.diagrams.net/
+打开网页后，如果提示选择存储位置，选本地/设备存储即可；然后把 `.drawio` 文件拖进浏览器窗口。图像元素可以继续移动、缩放和替换，文字框、箭头、分区框和标签也仍然可编辑。
+```
+
+English template:
 
 ```text
 Continue editing in the official draw.io editor: https://app.diagrams.net/
 Open the site, choose local/device storage if prompted, then drag the `.drawio` file into the browser window. The image elements can be moved/resized/replaced, and the text boxes, arrows, frames, and labels remain editable.
 ```
-
-Use the user's language for this note when appropriate.
