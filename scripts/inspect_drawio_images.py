@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Inspect embedded image elements in a draw.io file.
 
-This is a lightweight QA helper for PaperFig. It checks
+This is a lightweight QA helper for Abstract-Fig. It checks
 whether a draw.io file contains separate embedded image cells rather than a
 single pasted full figure or element sheet.
 """

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Abstract-Fig"
+  short_description: "Create boxed manuscript-style draw.io figures with image elements"
+  default_prompt: "Use $abstract-fig to turn my manuscript idea into an editable boxed manuscript-style draw.io figure with subject-matter visual elements."
