@@ -1,6 +1,6 @@
 # Abstract-Fig
 
-一个用于生成可编辑论文图形摘要和概念模型图的 Codex skill：先用 image2 或可用图像生成工具制作论文主题元素，再拆分为独立透明 PNG，嵌入 draw.io，同时保留文字框、箭头、边框、分组和标签可继续编辑。
+一个用于生成可编辑论文图形摘要和概念模型图的 Codex skill：先用 Codex 里的 image2 制作论文主题元素，再拆分为独立透明 PNG，嵌入 draw.io，同时保留文字框、箭头、边框、分组和标签可继续编辑。
 
 它适合做投稿论文里的 graphical abstract、机制概念图、方法流程图和综合示意图。目标不是生成一张不可编辑的 AI 大图，而是生成一个可以在 draw.io 里继续拖拽、改字、换元素、调版面的 `.drawio` 文件。
 
@@ -9,6 +9,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-SKILL.md-green.svg)](SKILL.md)
 [![draw.io](https://img.shields.io/badge/draw.io-editable%20.drawio-orange.svg)](https://app.diagrams.net/)
+
+## 使用边界
+
+这个 skill 目前只面向 Codex 使用。
+
+原因很简单：完整流程依赖 Codex 里的 image2 生图能力。它不是一个通用 Claude Code / 本地 agent skill。其他 agent 可以参考 `SKILL.md` 里的流程思路，但如果没有 image2 或等价的生图与文件处理能力，就不能完整复现“生成元素 -> 拆分元素 -> 嵌入 draw.io”的流程。
 
 ## 适用场景
 
@@ -57,7 +63,7 @@
 
 ## 使用方式
 
-在支持 skills / agent instructions 的 agent 里，可以直接发送：
+在 Codex 里，可以直接发送：
 
 ```text
 请从 GitHub 安装这个 skill，并在之后需要制作论文 graphical abstract、概念模型图或可编辑 draw.io 投稿图时优先使用它：
@@ -70,24 +76,12 @@ https://github.com/keros68/abstract-fig
 使用 $abstract-fig 根据这篇论文主线做一张可编辑 draw.io 图形摘要，要求先生成主题元素，再拆分嵌入到 draw.io。
 ```
 
-如果 agent 不能自动安装 GitHub skill，可以手动 clone 到 skills 目录：
+如果 Codex 不能自动安装 GitHub skill，可以手动 clone 到 Codex skills 目录：
 
 ```bash
 # Codex
 git clone https://github.com/keros68/abstract-fig.git \
   ~/.codex/skills/abstract-fig
-
-# Claude Code
-git clone https://github.com/keros68/abstract-fig.git \
-  ~/.claude/skills/abstract-fig
-
-# 通用 agent 约定目录
-git clone https://github.com/keros68/abstract-fig.git \
-  ~/.agents/skills/abstract-fig
-
-# 项目局部使用
-git clone https://github.com/keros68/abstract-fig.git \
-  ./.agents/skills/abstract-fig
 ```
 
 Windows PowerShell 示例：
@@ -96,7 +90,7 @@ Windows PowerShell 示例：
 git clone https://github.com/keros68/abstract-fig.git "$env:USERPROFILE\.codex\skills\abstract-fig"
 ```
 
-没有正式 skill loader 的环境，也可以把 `SKILL.md` 作为 agent instruction 使用；需要更稳定地处理 draw.io 图片嵌入时，再附带 `references/` 和 `scripts/`。
+没有 Codex skill loader 的环境，可以把 `SKILL.md` 当作流程参考，但不能保证完整运行，尤其是 image2 生成元素这一步。
 
 ## 输出内容
 
@@ -131,7 +125,7 @@ https://app.diagrams.net/
 
 ## 已知局限
 
-- 图像元素质量取决于宿主 agent 是否真的有 image2 或等价图像生成能力。
+- 图像元素质量取决于 Codex 中 image2 生成结果和后续拆分质量。
 - 拆分透明 PNG 元素通常仍需要视觉检查；复杂背景、阴影和细线可能需要手动清理。
 - draw.io 对字体和 HTML 上下标的渲染在不同系统上可能有细微差异。
 - 高水平投稿前仍建议导出最终 PNG/PDF 后按 A4 或期刊栏宽检查一次。
@@ -146,7 +140,9 @@ The project is released under the MIT License. Redistribution, forks, modified v
 
 ## English
 
-Abstract-Fig is a portable Codex skill for creating editable draw.io manuscript figures. It is designed for graphical abstracts, concept models, mechanism diagrams, workflow figures, and synthesis figures.
+Abstract-Fig is a Codex-only skill for creating editable draw.io manuscript figures. It is designed for graphical abstracts, concept models, mechanism diagrams, workflow figures, and synthesis figures.
+
+The full workflow currently depends on image2 inside Codex. Other agents may reuse the instructions as a reference, but they cannot run the complete element-generation workflow unless they provide an equivalent image-generation and file-processing environment.
 
 The key workflow is element-based: generate or reuse subject-matter image elements, split them into separate transparent PNGs, embed each element as an individual draw.io image object, and keep all text, boxes, arrows, frames, and labels editable.
 

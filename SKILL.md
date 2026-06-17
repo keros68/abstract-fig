@@ -1,11 +1,13 @@
 ---
 name: abstract-fig
-description: Create editable draw.io manuscript figures in a boxed paper-figure style, using subject-matter visual elements plus editable text boxes, arrows, and frames. Use required image2/generated or reused element sheets for graphical abstracts, concept models, and mechanism diagrams. Use when the user wants a thesis or paper graphical abstract, concept model, mechanism diagram, workflow figure, or synthesis figure as an editable .drawio file; when revising figures from reviewer, GPT, or Claude comments; when converting a dense figure into an element-based draw.io diagram; when a figure looks too generic, AI-like, dashboard-like, or flowchart-template-like; or when checking A4 or journal readability, label overlap, arrow semantics, and terminology strength. Default output is a .drawio file only; do not export PNG, SVG, or PDF unless the user asks.
+description: Codex-only skill for creating editable draw.io manuscript figures in a boxed paper-figure style, using image2 subject-matter visual elements plus editable text boxes, arrows, and frames. Use required image2/generated or reused element sheets for graphical abstracts, concept models, and mechanism diagrams. Use when the user wants a thesis or paper graphical abstract, concept model, mechanism diagram, workflow figure, or synthesis figure as an editable .drawio file; when revising figures from reviewer, GPT, or Claude comments; when converting a dense figure into an element-based draw.io diagram; when a figure looks too generic, AI-like, dashboard-like, or flowchart-template-like; or when checking A4 or journal readability, label overlap, arrow semantics, and terminology strength. The full workflow assumes Codex image2 availability. Default output is a .drawio file only; do not export PNG, SVG, or PDF unless the user asks.
 ---
 
 # Abstract-Fig
 
 Build an editable draw.io manuscript figure that communicates the paper main scientific story with visual elements, short labels, and defensible arrows. The figure should be editable first: keep text, boxes, arrows, and layout as draw.io objects; use raster elements only for scientific illustrations or icons.
+
+This skill is intended for Codex, because the complete workflow depends on image2 for generating subject-matter elements. Other agents may treat these instructions as a reference, but do not present the full workflow as agent-agnostic unless an equivalent image-generation and file-processing setup is available.
 
 ## Default Contract
 
