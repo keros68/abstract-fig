@@ -1,6 +1,6 @@
 # Style Decision Gate
 
-Use this reference after reading the user's manuscript content and before calling image2. The goal is to prevent image2 from defaulting to a fixed 3D/isometric look and to let the user approve the visual direction before generation.
+Use this reference after reading the user's manuscript content and before calling image2. The goal is to prevent image2 from defaulting to a fixed 3D/isometric look, without forcing every element into a simplified flat-icon style. Let the user approve the visual direction before generation.
 
 ## Core Rule
 
@@ -26,7 +26,7 @@ The brief should be short and in the user's language. Include:
 - proposed elements: 6-12 image2 elements to generate or reuse
 - recommended element style: one item from the element style menu
 - recommended layout style: one item from the layout menu
-- avoid list: no full-figure raster, no baked-in text, no default 3D/isometric unless selected, no tiny unreadable labels
+- avoid list: no full-figure raster, no baked-in text, no default 3D/isometric unless selected, no unwanted flat-icon simplification, no tiny unreadable labels
 
 Chinese compact template:
 
@@ -39,7 +39,7 @@ Chinese compact template:
 拟生成元素：...
 推荐元素风格：...
 推荐版式：...
-我会避免：整张 AI 大图、文字烘焙进图片、默认 3D/isometric、小字号。
+我会避免：整张 AI 大图、文字烘焙进图片、默认 3D/isometric、不必要的扁平简化、小字号。
 
 下一步你选一个：
 A. 按这个方案继续
@@ -58,7 +58,7 @@ Reading path: ...
 Planned elements: ...
 Recommended element style: ...
 Recommended layout style: ...
-I will avoid: full-figure raster output, baked-in text, default 3D/isometric styling, and tiny unreadable labels.
+I will avoid: full-figure raster output, baked-in text, default 3D/isometric styling, unwanted flat-icon simplification, and tiny unreadable labels.
 
 Choose one:
 A. Continue with this recommended plan
@@ -73,14 +73,18 @@ Use these options for image2 element generation. These describe visual language,
 1. `clean scientific vector`
    - Default general option.
    - White background, clean scientific icons, consistent line weight, restrained colors.
+   - Not the same as low-detail flat icons; keep enough domain detail for manuscript use.
    - Good for graphical abstracts, experimental workflows, environmental mechanisms, and biomedical-style schematic figures.
 
 2. `soft watercolor scientific illustration`
    - Soft texture, crisp ink edge, muted natural colors.
+   - Preserve hand-painted texture, soil/rock/water/material detail, and natural-process richness.
+   - Do not flatten into simple vector icons.
    - Good for geology, hydrology, ecology, soil, landscape, and natural-process figures.
 
 3. `flat schematic vector`
    - Flat vector forms, minimal shadows, clear blocks and arrows.
+   - This is the deliberately simplified option.
    - Good for method workflows, model frameworks, data pipelines, and machine-learning figures.
 
 4. `technical line art`
@@ -93,6 +97,7 @@ Use these options for image2 element generation. These describe visual language,
 
 6. `cross-section cutaway illustration`
    - Sectional blocks, visible internal layers, process arrows can be added later in draw.io.
+   - Preserve layer texture, particle/rock/soil detail, and readable cutaway structure.
    - Good for groundwater, soil, rock, river valleys, aquifers, roots, sediment layers, and subsurface processes.
 
 7. `minimal pictogram / visual abstract icon`
@@ -106,11 +111,12 @@ Use these options for image2 element generation. These describe visual language,
 
 Default selection:
 
-- Use `clean scientific vector` for most manuscripts.
-- Use `soft watercolor scientific illustration` or `cross-section cutaway illustration` for earth, water, soil, ecology, landscape, and environmental-process topics.
+- Use `clean scientific vector` for biomedical, lab, general conceptual, and experimental workflow figures.
+- Use `soft watercolor scientific illustration` or `cross-section cutaway illustration` first for earth, water, soil, ecology, landscape, hydrogeology, and environmental-process topics.
 - Use `flat schematic vector` for data/model/method-heavy figures.
 - Use `technical line art` when the user wants a restrained, serious, or black-and-white body figure.
 - Use `3D / isometric scientific blocks` only when selected by the user or strongly justified by the object.
+- Never choose `flat schematic vector` merely because the workflow says not to default to 3D/isometric.
 
 ## Layout Style Menu
 
@@ -211,6 +217,13 @@ Layout styles:
 
 After the user chooses or accepts a style, translate it into the image2 prompt. The image2 prompt must request an element sheet, not a finished figure.
 
+Style fidelity rule:
+
+- `not 3D` does not mean `simple`, `flat`, or `minimal`.
+- Preserve the selected style's visual richness. For watercolor and cutaway styles, keep material textures, internal layers, and natural forms.
+- Use words like `simple icon`, `flat icon`, `minimal pictogram`, or `low-detail` only when the user selected `flat schematic vector` or `minimal pictogram / visual abstract icon`.
+- If the generated result becomes too simple compared with the selected style, regenerate with stronger positive style tokens before assembling draw.io.
+
 Always include:
 
 - white or transparent-friendly background
@@ -223,6 +236,18 @@ Unless the user selected 3D/isometric, include:
 
 ```text
 not 3D, not isometric, no glossy plastic render, no mockup lighting
+```
+
+For `soft watercolor scientific illustration`, add:
+
+```text
+soft watercolor texture, crisp ink outlines, natural material detail, subtle paper-like shading, not flat vector icons
+```
+
+For `cross-section cutaway illustration`, add:
+
+```text
+cutaway scientific illustration, visible internal layers, soil/rock/water texture, granular material detail, not flat icon style
 ```
 
 Do not ask another style question after the user has selected A, B, or C unless generation fails or the result clearly violates the selected style.

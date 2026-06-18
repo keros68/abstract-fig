@@ -45,14 +45,17 @@ Keep the plan tied to the manuscript terms. Do not generate unrelated decorative
 
 Use the selected or recommended element style from `style-decision-gate.md`.
 
+Important: avoiding 3D/isometric styling must not collapse the result into generic flat icons. Preserve the selected style's visual richness. If the selected style is watercolor, cutaway, or semi-realistic object, the prompt must include positive texture/detail words and must explicitly avoid `flat icon style`.
+
 Default behavior:
 
 - Do not default to `3D / isometric scientific blocks`.
-- Use `clean scientific vector` for most manuscript figures.
-- Use `soft watercolor scientific illustration` or `cross-section cutaway illustration` for earth, water, soil, ecology, landscape, and environmental-process figures.
+- Use `clean scientific vector` for biomedical, lab, general conceptual, and experimental workflow figures.
+- Use `soft watercolor scientific illustration` or `cross-section cutaway illustration` first for earth, water, soil, ecology, landscape, hydrogeology, and environmental-process figures.
 - Use `flat schematic vector` for method, model, and data workflow figures.
 - Use `technical line art` when the user wants a restrained or black-and-white body concept model.
 - Use `3D / isometric scientific blocks` only when the user selects it or when spatial block structure is central to the figure.
+- Never choose `flat schematic vector` merely because the prompt says not to use 3D/isometric.
 
 Avoid using branded terms such as BioRender or Mind the Graph inside the image2 prompt. Use neutral visual descriptions such as `clean scientific vector illustration`, `consistent scientific icon style`, or `publication-style scientific illustration`.
 
@@ -64,9 +67,10 @@ The prompt may use the user's manuscript language, but the generated element she
 Template:
 
 ```text
-Create a clean scientific illustration element sheet for an editable manuscript figure. 
+Create a publication-style scientific illustration element sheet for an editable manuscript figure. 
 White or flat chroma-key background, no text, no labels, no numbers, no watermark.
-Consistent [selected element style], crisp edges, restrained colors, publication-ready, not cartoonish.
+Consistent [selected element style], crisp edges, publication-ready, not cartoonish.
+Preserve enough scientific and material detail for manuscript use; do not simplify into generic low-detail icons unless the selected style is flat schematic vector or minimal pictogram.
 Not 3D, not isometric, no glossy plastic render, no mockup lighting, unless the user selected 3D/isometric.
 Arrange the following separate elements with generous white space between them:
 1. [element]
@@ -81,6 +85,19 @@ For hydrogeology or environmental geochemistry, useful style words are:
 clean scientific cross-section, cutaway aquifer block, soft watercolor texture, crisp ink edge, muted colors, white background, no text, not 3D, not isometric
 ```
 
+For hydrogeology, environmental geochemistry, soil, ecology, and natural-process figures, prefer a textured watercolor/cutaway prompt over a flat schematic prompt unless the user explicitly selected `flat schematic vector`.
+
+Style-specific positive tokens:
+
+- `clean scientific vector`: clean scientific vector illustration, consistent icon family, crisp outlines, moderate detail, not low-detail clipart
+- `soft watercolor scientific illustration`: soft watercolor texture, crisp ink outlines, natural material detail, subtle paper-like shading, not flat vector icons
+- `flat schematic vector`: flat vector schematic, minimal shadows, simple geometric forms, clear blocks, low visual complexity
+- `technical line art`: precise technical line drawing, monochrome or low-saturation lines, minimal fill, clear contours
+- `semi-realistic scientific object`: semi-realistic scientific object rendering, clean white background, accurate object shape, subtle material texture
+- `cross-section cutaway illustration`: cutaway scientific illustration, visible internal layers, soil/rock/water texture, granular material detail, not flat icon style
+- `minimal pictogram / visual abstract icon`: minimal pictogram, high legibility, simple icon set, very low detail
+- `3D / isometric scientific blocks`: isometric scientific block, controlled 3D structure, no glossy plastic look
+
 Avoid:
 
 - text baked into the image
@@ -88,6 +105,7 @@ Avoid:
 - emoji-like icons
 - hyper-realistic stock photos
 - default glossy 3D or isometric styling
+- unwanted flat-icon simplification when watercolor, cutaway, or semi-realistic styles were selected
 - brand-specific style names in the prompt
 - complex backgrounds
 - tiny elements that will blur at A4 width
