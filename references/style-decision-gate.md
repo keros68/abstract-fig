@@ -160,25 +160,26 @@ Chinese:
 
 ```text
 可以。你选“元素风格 + 版式”即可，比如 `2 + 6`。
+每个选项后面的英文是给 image2 prompt 用的，你看中文解释选择就行。
 
 元素风格：
-1 clean scientific vector
-2 soft watercolor scientific illustration
-3 flat schematic vector
-4 technical line art
-5 semi-realistic scientific object
-6 cross-section cutaway illustration
-7 minimal pictogram / visual abstract icon
-8 3D / isometric scientific blocks
+1 干净科学矢量图（clean scientific vector）：白底、统一描边、颜色克制，最通用
+2 柔和水彩科学插图（soft watercolor scientific illustration）：适合地学、水文、生态、土壤和自然过程
+3 扁平流程示意图（flat schematic vector）：适合方法流程、模型框架、数据管线
+4 技术线稿/黑白线图（technical line art）：适合严肃正文图、黑白打印、机制示意
+5 半写实科学对象（semi-realistic scientific object）：适合仪器、井、反应器、岩芯、样品瓶
+6 剖面/切块示意图（cross-section cutaway illustration）：适合地下水、土壤、岩体、河谷、含水层
+7 极简图标/视觉摘要图标（minimal pictogram / visual abstract icon）：适合医学、公卫、结果摘要
+8 3D/等距科学模块（3D / isometric scientific blocks）：只在需要立体模块时选，容易有固定 AI 味
 
 版式：
-1 three-panel graphical abstract
-2 boxed manuscript layout
-3 layered conceptual model
-4 method workflow
-5 comparison / contrast layout
-6 cross-section mechanism model
-7 visual abstract panels
+1 三段式图形摘要（three-panel graphical abstract）：左-中-右讲清楚一个故事
+2 论文正文框架图（boxed manuscript layout）：白底、文字框、元素锚点，适合正文概念图
+3 分层概念模型（layered conceptual model）：背景-过程-证据-结论，上下分层
+4 方法流程图（method workflow）：数据输入、处理步骤、敏感性检查、输出
+5 对比式版式（comparison / contrast layout）：A vs B、处理组 vs 对照组、前后对比
+6 剖面机制模型（cross-section mechanism model）：剖面场景 + 过程箭头 + 证据框
+7 视觉摘要面板（visual abstract panels）：1-3 个结果面板，适合医学/公卫类摘要图
 ```
 
 English:
