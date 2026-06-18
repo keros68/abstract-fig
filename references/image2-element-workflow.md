@@ -15,6 +15,8 @@ The final response must state the element source: `image2-generated element shee
 
 The element sheet is only an intermediate file. It must not be used as the main image in the final draw.io figure.
 
+Before calling image2, run the style decision gate in `style-decision-gate.md` unless the user already provided clear style and layout requirements or explicitly asked you to proceed without a design check. Carry the selected element style and layout style into the image2 prompt and final report.
+
 ## When to Use Image2 Elements
 
 Use image2 or the available image generation tool when:
@@ -39,6 +41,21 @@ Before calling image generation, list 6-12 reusable elements:
 
 Keep the plan tied to the manuscript terms. Do not generate unrelated decorative art.
 
+## Style Selection
+
+Use the selected or recommended element style from `style-decision-gate.md`.
+
+Default behavior:
+
+- Do not default to `3D / isometric scientific blocks`.
+- Use `clean scientific vector` for most manuscript figures.
+- Use `soft watercolor scientific illustration` or `cross-section cutaway illustration` for earth, water, soil, ecology, landscape, and environmental-process figures.
+- Use `flat schematic vector` for method, model, and data workflow figures.
+- Use `technical line art` when the user wants a restrained or black-and-white body concept model.
+- Use `3D / isometric scientific blocks` only when the user selects it or when spatial block structure is central to the figure.
+
+Avoid using branded terms such as BioRender or Mind the Graph inside the image2 prompt. Use neutral visual descriptions such as `clean scientific vector illustration`, `consistent scientific icon style`, or `publication-style scientific illustration`.
+
 ## Image Prompt Pattern
 
 Generate a single element sheet, not a finished figure. Ask for no text in the image.
@@ -49,7 +66,8 @@ Template:
 ```text
 Create a clean scientific illustration element sheet for an editable manuscript figure. 
 White or flat chroma-key background, no text, no labels, no numbers, no watermark.
-Consistent semi-realistic vector-watercolor style, crisp edges, soft natural colors, publication-ready, not cartoonish.
+Consistent [selected element style], crisp edges, restrained colors, publication-ready, not cartoonish.
+Not 3D, not isometric, no glossy plastic render, no mockup lighting, unless the user selected 3D/isometric.
 Arrange the following separate elements with generous white space between them:
 1. [element]
 2. [element]
@@ -60,7 +78,7 @@ Each element must be isolated, complete, and easy to crop into a transparent PNG
 For hydrogeology or environmental geochemistry, useful style words are:
 
 ```text
-clean scientific cross-section, soft watercolor texture, crisp ink edge, muted colors, white background, no text
+clean scientific cross-section, cutaway aquifer block, soft watercolor texture, crisp ink edge, muted colors, white background, no text, not 3D, not isometric
 ```
 
 Avoid:
@@ -69,6 +87,8 @@ Avoid:
 - one big combined scene that cannot be rearranged
 - emoji-like icons
 - hyper-realistic stock photos
+- default glossy 3D or isometric styling
+- brand-specific style names in the prompt
 - complex backgrounds
 - tiny elements that will blur at A4 width
 
@@ -115,6 +135,8 @@ Use the user's previous high-quality figures or element folders as style anchors
 Completion evidence to report:
 
 - element source
+- chosen element style
+- chosen layout style
 - element sheet path, if generated
 - split element folder path
 - number of split PNG files used

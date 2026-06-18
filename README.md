@@ -28,6 +28,7 @@
 
 - 从论文内容中提炼图件主线，例如 `setting -> process/media -> evidence -> status/output`。
 - 判断图件类型：graphical abstract、正文概念模型、机制图、方法流程图或综合图。
+- 在 image2 生图前先给出绘制方案，让用户选择由 agent 自主判断、展开风格菜单，或输入自定义风格要求。
 - 生成或复用 image2 元素表，并把元素拆分成多个透明 PNG。
 - 把每个元素作为独立图片对象嵌入 draw.io，方便移动、缩放、替换。
 - 使用可编辑的文字框、标题、分区框、箭头和说明标签表达科学逻辑。
@@ -49,6 +50,8 @@
 论文主线 / 审稿意见 / 现有草图
   ↓
 提炼 3-5 个图件逻辑块
+  ↓
+展示绘制方案并确认风格：agent 自主 / 风格菜单 / 自定义风格
   ↓
 生成或复用 image2 元素表
   ↓
@@ -117,6 +120,7 @@ https://app.diagrams.net/
 - `SKILL.md` - skill 主说明和触发规则。
 - `agents/openai.yaml` - 兼容运行时的 UI 元数据。
 - `references/figure-types.md` - graphical abstract、概念模型、workflow 和 synthesis figure 的选择规则。
+- `references/style-decision-gate.md` - image2 生图前的绘制方案、元素风格和版式选择规则。
 - `references/image2-element-workflow.md` - image2 元素生成、拆分和复用规则。
 - `references/drawio-element-workflow.md` - draw.io 嵌入与编辑性要求。
 - `references/boxed-manuscript-style.md` - 白底、文字框、细边框的论文图风格约束。

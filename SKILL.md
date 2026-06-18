@@ -27,13 +27,14 @@ This skill is intended for Codex, because the complete workflow depends on image
 1. **Define the figure role.** Choose graphical abstract, body concept model, workflow figure, or synthesis figure. If unclear, infer from the user's wording and manuscript context; ask only when the choice changes the layout substantially.
 2. **Extract the scientific spine.** Reduce the paper to 3-5 blocks such as `setting -> aquifer media/process -> evidence -> status/output`.
 3. **Set the canvas.** For A4-facing wide figures, use a wide canvas near 5:2 or A4-landscape proportions. Leave margins for manual edits.
-4. **Pass the image-element gate.** For a graphical abstract, mechanism diagram, or body concept model, first generate an image2 element sheet or locate reusable project elements. Record the element source. Shape-only fallback is allowed only for pure workflow figures or explicit user requests.
-5. **Plan the boxed manuscript layout.** Load `references/boxed-manuscript-style.md` unless the user explicitly wants a modern infographic/dashboard style. Decide which claims belong in editable text boxes and which pictorial elements anchor them.
-6. **Write short labels.** Use one heading line plus at most one supporting line per box. Put detailed explanation in the manuscript, not the figure.
-7. **Build in draw.io.** Use editable text boxes, rounded rectangles, arrows, and embedded image elements. Avoid nested cards and dense legends.
-8. **Run visual QA.** Check A4 readability, overlap, arrow meaning, chemical notation, unsupported process terms, and whether image2/project elements are actually embedded.
-9. **Verify split-image embedding.** For graphical abstracts, mechanism diagrams, and body concept models, run `scripts/inspect_drawio_images.py <drawio> --elements-dir <elements_dir>` or perform an equivalent XML inspection. Do not call the figure done if it only embeds a whole element sheet or a single full-figure raster image.
-10. **Report the `.drawio` path.** Also state whether image2 generated new elements or existing elements were reused, the number of split PNG elements, and the number of embedded image cells. Include the final handoff note. Mention remaining manual drag suggestions only if they matter.
+4. **Run the style decision gate.** Load `references/style-decision-gate.md`. Before calling image2, show the user a compact figure design brief with figure role, core message, reading path, proposed elements, recommended element style, and recommended layout style. Ask the user to choose: A agent continues with the recommendation, B guided style menu, or C custom style instruction. Skip the wait only if the user explicitly asked you to proceed without a design check or already provided clear style and layout requirements.
+5. **Pass the image-element gate.** For a graphical abstract, mechanism diagram, or body concept model, first generate an image2 element sheet or locate reusable project elements after the style decision is settled. Record the element source and chosen style. Shape-only fallback is allowed only for pure workflow figures or explicit user requests.
+6. **Plan the boxed manuscript layout.** Load `references/boxed-manuscript-style.md` unless the user explicitly wants a modern infographic/dashboard style. Decide which claims belong in editable text boxes and which pictorial elements anchor them.
+7. **Write short labels.** Use one heading line plus at most one supporting line per box. Put detailed explanation in the manuscript, not the figure.
+8. **Build in draw.io.** Use editable text boxes, rounded rectangles, arrows, and embedded image elements. Avoid nested cards and dense legends.
+9. **Run visual QA.** Check A4 readability, overlap, arrow meaning, chemical notation, unsupported process terms, and whether image2/project elements are actually embedded.
+10. **Verify split-image embedding.** For graphical abstracts, mechanism diagrams, and body concept models, run `scripts/inspect_drawio_images.py <drawio> --elements-dir <elements_dir>` or perform an equivalent XML inspection. Do not call the figure done if it only embeds a whole element sheet or a single full-figure raster image.
+11. **Report the `.drawio` path.** Also state whether image2 generated new elements or existing elements were reused, the chosen element style and layout style, the number of split PNG elements, and the number of embedded image cells. Include the final handoff note. Mention remaining manual drag suggestions only if they matter.
 
 ## Figure Role Selection
 
@@ -52,6 +53,8 @@ Load `references/drawio-element-workflow.md` when generating, replacing, embeddi
 
 Load `references/image2-element-workflow.md` when creating graphical abstracts, mechanism diagrams, body concept models, or any figure where a plain box-and-icon workflow would look generic or AI-like.
 
+Load `references/style-decision-gate.md` before image2 generation unless the user already gave clear style and layout requirements or explicitly asked you to proceed without a design check.
+
 Load `references/boxed-manuscript-style.md` when the target is a paper graphical abstract, concept model, synthesis figure, or any figure that should resemble a journal manuscript figure rather than a slide dashboard.
 
 Core rules:
@@ -59,6 +62,7 @@ Core rules:
 - Keep all scientific text editable in draw.io.
 - Use raster/image elements for things like aquifer media, rivers, villages, recharge, wells, redox patches, or evidence icons.
 - Reuse existing clean elements when available. If new elements are needed, call image2 or the available image generation tool to create a consistent element sheet, split it into transparent PNGs, then embed them into draw.io.
+- Do not default to 3D or isometric elements. Prefer clean 2D scientific vector, soft scientific illustration, or cross-section cutaway styles unless the user selects 3D/isometric or the figure clearly benefits from it.
 - Keep the split PNG elements as separate files in an `elements` folder or clearly named equivalent. Do not only keep the original element sheet.
 - Insert each useful split PNG as its own draw.io image object. Do not paste the entire generated element sheet or a full rendered figure as the main image.
 - Do not settle for generic flowchart icons when the figure needs paper-specific subjects. Use image2/generated pictorial elements to carry the scientific scene, then keep text and arrows editable.
