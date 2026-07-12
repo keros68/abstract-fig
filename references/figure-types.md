@@ -12,7 +12,7 @@ Design:
 
 - Prefer horizontal three-panel flow.
 - Use large pictorial elements and very short text.
-- Use image2/project pictorial elements as the main visual anchors; avoid a plain box-only workflow.
+- Use image2/project pictorial elements as the main visual anchors; avoid a plain box-only workflow. Follow the Required Gate in `references/image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
 - Prefer boxed manuscript style: column headings, editable claim boxes, restrained borders, and image elements inside or beside the claims.
 - Keep one bottom takeaway sentence at most.
 - Do not include detailed methods, data source names, long captions, or caveats.

@@ -93,13 +93,35 @@ def inspect_drawio(drawio_path: Path, elements_dir: Path | None = None) -> dict:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Inspect draw.io embedded image cells.")
+    parser = argparse.ArgumentParser(
+        description="Inspect draw.io embedded image cells.",
+        epilog=(
+            "Exit codes: 0 = OK; 1 = drawio file not found; "
+            "2 = fewer than --min-images image cells; "
+            "3 = non-embedded (non data:image) image cells found; "
+            "4 = large image cells that may be a pasted full figure/sheet; "
+            "5 = image cells that look like an element sheet/full figure; "
+            "6 = drawio file is not valid XML."
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     parser.add_argument("drawio", type=Path)
     parser.add_argument("--elements-dir", type=Path, default=None)
     parser.add_argument("--min-images", type=int, default=3)
     args = parser.parse_args()
 
-    report = inspect_drawio(args.drawio, args.elements_dir)
+    try:
+        report = inspect_drawio(args.drawio, args.elements_dir)
+    except FileNotFoundError:
+        print(f"Error: drawio file not found: {args.drawio}", file=sys.stderr)
+        return 1
+    except ET.ParseError:
+        print(
+            f"Error: {args.drawio} is not valid XML - check the .drawio was saved correctly",
+            file=sys.stderr,
+        )
+        return 6
+
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
     if report["image_cell_count"] < args.min_images:

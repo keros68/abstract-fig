@@ -13,7 +13,7 @@ If neither is possible, do not continue with a hand-drawn draw.io substitute. Te
 
 The final response must state the element source: `image2-generated element sheet`, `reused project elements`, or a clear skip reason.
 
-The element sheet is only an intermediate file. It must not be used as the main image in the final draw.io figure.
+The element sheet is only an intermediate file. It must not be used as the main image in the final draw.io figure. Split it into separate PNGs and embed each element as its own draw.io image object: multiple embedded image elements, never one full-canvas image.
 
 Before calling image2, run the style decision gate in `style-decision-gate.md` unless the user already provided clear style and layout requirements or explicitly asked you to proceed without a design check. Carry the selected element style and layout style into the image2 prompt and final report.
 
@@ -142,7 +142,7 @@ In draw.io:
 - align same-role elements to a similar visual size, but allow important mechanism elements to be larger
 - embed image data so the `.drawio` file is portable and does not depend on local image paths
 - avoid using draw.io primitive shapes as the main visual subjects after the image-element gate has been triggered
-- after assembly, inspect the draw.io XML or run `scripts/inspect_drawio_images.py` to confirm that split PNGs became multiple embedded image cells
+- after assembly, run the QA verification script from SKILL.md (or inspect the draw.io XML) to confirm that split PNGs became multiple embedded image cells
 
 ## Quality Bar
 

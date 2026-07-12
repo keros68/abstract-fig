@@ -53,9 +53,7 @@ Use this before saying the draw.io figure is ready.
 - Text remains editable.
 - Boxes and arrows remain editable.
 - Raster image elements are embedded in the `.drawio`.
-- Image2/project elements are split into separate PNG files, not only kept as one element sheet.
-- The `.drawio` contains multiple embedded image cells for the main pictorial elements.
-- No single large embedded image acts as the whole figure, whole panel set, or whole element sheet.
+- Follow the Required Gate in `references/image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
 - The original source figure remains untouched.
 
 ## Deliverable

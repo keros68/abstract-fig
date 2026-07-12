@@ -44,15 +44,9 @@ Do not use decorative icons or hand-drawn draw.io primitives as a substitute for
 
 ## Splitting Generated Elements
 
-If using an element sheet:
+Follow the Required Gate in `references/image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
 
-- Use a regular grid only when elements stay inside cells.
-- If an element crosses a cell boundary, crop it manually.
-- Remove chroma-key background and save transparent PNGs.
-- Keep each cropped element as a separate PNG in an `elements` folder or clearly named equivalent.
-- Treat the original element sheet as provenance only; do not embed it as a final draw.io image.
-- Check a preview sheet on white background.
-- Fix remaining colored edge artifacts, cut-off arrows, or fragments from adjacent cells.
+If using an element sheet, crop each element into its own transparent PNG (remove the chroma-key background), check a preview sheet on white background, and fix any remaining edge artifacts or fragments from adjacent cells.
 
 Array-safety note: when computing chroma-key color distance in Python, cast RGB arrays to `int32` before squaring.
 
@@ -66,7 +60,7 @@ image=data:image/png,<base64 data>;
 
 If the exported preview shows broken image icons, the data URI may be wrong. Try removing `;base64` from the image style.
 
-After embedding, run `scripts/inspect_drawio_images.py <drawio> --elements-dir <elements_dir>` or inspect the XML manually. A graphical abstract or mechanism figure should have multiple embedded image cells, not one large image cell containing a whole element sheet or rendered figure.
+After embedding, run the QA verification script from SKILL.md (or inspect the XML manually) to confirm the Required Gate in `references/image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
 
 ## Layout Rules
 
