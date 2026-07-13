@@ -120,6 +120,7 @@ https://app.diagrams.net/
 - `SKILL.md` - skill 主说明和触发规则。
 - `agents/openai.yaml` - 兼容运行时的 UI 元数据。
 - `references/figure-types.md` - graphical abstract、概念模型、workflow 和 synthesis figure 的选择规则。
+- `references/research-roadmap.md` - 技术路线图（阶段模板、mxCell 样式速查、布局经验值），默认 shape-only。
 - `references/style-decision-gate.md` - image2 生图前的绘制方案、元素风格和版式选择规则。
 - `references/image2-element-workflow.md` - image2 元素生成、拆分和复用规则。
 - `references/drawio-element-workflow.md` - draw.io 嵌入与编辑性要求。
