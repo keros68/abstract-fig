@@ -13,6 +13,8 @@ If neither is possible, do not continue with a hand-drawn draw.io substitute. Te
 
 The final response must state the element source: `image2-generated element sheet`, `reused project elements`, or a clear skip reason.
 
+Research/technical roadmaps (技术路线图) — diagrams showing project phases, timelines, milestones, or per-stage methodology — are classified as a Workflow Figure variant, not a mechanism diagram or concept model. They are exempt from this Required Gate by default. Only apply the image2 element gate to a roadmap if the user explicitly asks for a more pictorial, graphical-abstract-style treatment. See `research-roadmap.md`.
+
 The element sheet is only an intermediate file. It must not be used as the main image in the final draw.io figure. Split it into separate PNGs and embed each element as its own draw.io image object: multiple embedded image elements, never one full-canvas image.
 
 Before calling image2, run the style decision gate in `style-decision-gate.md` unless the user already provided clear style and layout requirements or explicitly asked you to proceed without a design check. Carry the selected element style and layout style into the image2 prompt and final report.

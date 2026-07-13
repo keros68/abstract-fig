@@ -58,6 +58,17 @@ Design:
 - Separate input data, prior grouping, method/sensitivity checks, outputs, and objective.
 - Avoid making the workflow look like a management-priority tool unless the manuscript is explicitly about management.
 
+### Research/Technical Roadmap Variant (技术路线图)
+
+Purpose: lay out project phases, timeline, milestones, or per-stage methodology for a thesis proposal, grant application, or project report, rather than a data-processing method sequence.
+
+Use when the user says 技术路线图, 研究路线(图), 开题报告路线图, 课题路线图, research roadmap, or technical roadmap.
+
+Design:
+
+- Defaults to shape-only draw.io construction and is exempt from the image2 Required Gate in `image2-element-workflow.md` by default; only add image2 elements if the user explicitly asks for a more pictorial, graphical-abstract-style treatment.
+- See `research-roadmap.md` for stage template types, mxCell style examples, layout heuristics, and content-mapping guidance.
+
 ## Synthesis Figure
 
 Purpose: summarize results or mechanism without full method detail.

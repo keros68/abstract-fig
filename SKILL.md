@@ -1,6 +1,6 @@
 ---
 name: abstract-fig
-description: Codex-native skill for editable draw.io manuscript figures using image2-generated or reused elements plus editable text, arrows, and frames. Use for a graphical abstract, concept model, mechanism diagram, or workflow/synthesis figure (图形摘要、概念模型图、机制图、可编辑 draw.io); when revising from reviewer/GPT/Claude comments, converting a dense figure into element-based draw.io, or when a figure looks generic/templated/AI-like. Do not run the full workflow without an image-generation tool or a reusable element library - state the limitation instead of substituting plain shapes.
+description: Codex-native skill for editable draw.io manuscript figures using image2-generated or reused elements plus editable text, arrows, and frames. Use for a graphical abstract, concept model, mechanism diagram, workflow/synthesis figure, or research/technical roadmap (图形摘要、概念模型图、机制图、可编辑 draw.io、技术路线图、研究路线图); when revising from reviewer/GPT/Claude comments, converting a dense figure into element-based draw.io, or when a figure looks generic/templated/AI-like. Do not run the full workflow without an image-generation tool or a reusable element library - state the limitation instead of substituting plain shapes.
 ---
 
 # Abstract-Fig
@@ -25,7 +25,7 @@ This skill is intended for Codex, because the complete workflow depends on image
 ## Workflow
 
 1. **Confirm image-generation capability.** Confirm an image-generation tool is available in this host. If none exists and no reusable element library is provided, stop and tell the user this workflow needs image generation - do not substitute plain draw.io primitives.
-2. **Define the figure role.** Choose graphical abstract, body concept model, workflow figure, or synthesis figure. If unclear, infer from the user's wording and manuscript context; ask only when the choice changes the layout substantially.
+2. **Define the figure role.** Choose graphical abstract, body concept model, workflow figure (including research/technical roadmaps), or synthesis figure. If unclear, infer from the user's wording and manuscript context; ask only when the choice changes the layout substantially.
 3. **Extract the scientific spine.** Reduce the paper to 3-5 blocks such as `setting -> aquifer media/process -> evidence -> status/output`.
 4. **Set the canvas.** For A4-facing wide figures, use a wide canvas near 5:2 or A4-landscape proportions. Leave margins for manual edits.
 5. **Run the style decision gate.** Load `references/style-decision-gate.md`. Before calling image2, show the user a compact figure design brief with figure role, core message, reading path, proposed elements, recommended element style, and recommended layout style. Ask the user to choose: A agent continues with the recommendation, B guided style menu, or C custom style instruction. Skip the wait only if the user explicitly asked you to proceed without a design check or already provided clear style and layout requirements.
@@ -46,6 +46,7 @@ Quick guide:
 - **Graphical abstract:** horizontal, fast, visual, 5-10 second reading. Use three broad panels and one bottom takeaway.
 - **Body concept model:** more rigorous; can show context, process domains, evidence, and interpreted outputs.
 - **Workflow figure:** shows method steps, data inputs, sensitivity checks, outputs, and objective.
+- **Research/technical roadmap:** a workflow figure variant showing project phases, timeline, or milestones; structured as stages, not method steps. Defaults to shape-only and is exempt from the image2 Required Gate. Load `references/research-roadmap.md`.
 - **Synthesis figure:** summarizes result logic or mechanism without all method details.
 
 ## Element-Based Draw.io Rules
