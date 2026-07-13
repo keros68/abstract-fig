@@ -44,7 +44,7 @@ Do not use decorative icons or hand-drawn draw.io primitives as a substitute for
 
 ## Splitting Generated Elements
 
-Follow the Required Gate in `references/image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
+Follow the Required Gate in `image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
 
 If using an element sheet, crop each element into its own transparent PNG (remove the chroma-key background), check a preview sheet on white background, and fix any remaining edge artifacts or fragments from adjacent cells.
 
@@ -60,7 +60,7 @@ image=data:image/png,<base64 data>;
 
 If the exported preview shows broken image icons, the data URI may be wrong. Try removing `;base64` from the image style.
 
-After embedding, run the QA verification script from SKILL.md (or inspect the XML manually) to confirm the Required Gate in `references/image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
+After embedding, run the QA verification script from SKILL.md (or inspect the XML manually) to confirm the Required Gate in `image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
 
 ## Layout Rules
 

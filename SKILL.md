@@ -1,6 +1,6 @@
 ---
 name: abstract-fig
-description: Codex-native skill for editable draw.io manuscript figures using image2-generated or reused elements plus editable text, arrows, and frames. Use for a graphical abstract, concept model, mechanism diagram, or workflow/synthesis figure (图形摘要、概念模型图、机制图、可编辑 draw.io); when revising from reviewer/GPT/Claude comments, converting a dense figure into element-based draw.io, or when a figure looks generic/templated/AI-like. Do not run the full workflow without an image-generation tool - state the limitation instead of substituting plain shapes.
+description: Codex-native skill for editable draw.io manuscript figures using image2-generated or reused elements plus editable text, arrows, and frames. Use for a graphical abstract, concept model, mechanism diagram, or workflow/synthesis figure (图形摘要、概念模型图、机制图、可编辑 draw.io); when revising from reviewer/GPT/Claude comments, converting a dense figure into element-based draw.io, or when a figure looks generic/templated/AI-like. Do not run the full workflow without an image-generation tool or a reusable element library - state the limitation instead of substituting plain shapes.
 ---
 
 # Abstract-Fig

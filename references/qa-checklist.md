@@ -53,7 +53,7 @@ Use this before saying the draw.io figure is ready.
 - Text remains editable.
 - Boxes and arrows remain editable.
 - Raster image elements are embedded in the `.drawio`.
-- Follow the Required Gate in `references/image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
+- Follow the Required Gate in `image2-element-workflow.md`: multiple embedded image elements, never one full-canvas image.
 - The original source figure remains untouched.
 
 ## Deliverable
