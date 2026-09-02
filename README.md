@@ -1,5 +1,7 @@
 # Abstract-Fig
 
+> **本项目已并入 [xiaoyu-skill](https://github.com/keros68/xiaoyu-skill/tree/main/skills/abstract-fig)。本仓库保留为只读历史入口，后续更新请前往新仓库。**
+
 Abstract-Fig 是一个 Codex agent skill，用于把论文内容做成可继续编辑的 draw.io 图件：图形摘要、正文概念模型、机制图、方法流程图、研究/技术路线图和综合示意图。
 
 科学场景由 image2 生成的主题元素承担：元素表拆成独立透明 PNG 逐个嵌入，文字框、箭头、边框和标签保留为 draw.io 对象，拿到文件后仍可拖拽、改字、换元素、调版面。
